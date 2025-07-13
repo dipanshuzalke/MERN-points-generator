@@ -18,29 +18,30 @@ const HistoryLog = ({ refresh }) => {
   }, [refresh]);
 
   return (
-    <div className="mt-8">
-      <h3 className="text-xl font-bold mb-3">📜 Claim History</h3>
-      <div className="overflow-x-auto max-h-64 overflow-y-scroll border rounded">
-        <table className="min-w-full text-sm text-left">
-          <thead className="bg-gray-100 text-gray-700 sticky top-0">
-            <tr>
-              <th className="p-2 border">User</th>
-              <th className="p-2 border">Points</th>
-              <th className="p-2 border">Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {history.map((entry) => (
-              <tr key={entry._id} className="border-t">
-                <td className="p-2">{entry.userName}</td>
-                <td className="p-2">{entry.points}</td>
-                <td className="p-2 text-gray-600">
-                  {new Date(entry.timestamp).toLocaleString()}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="h-full">
+      <h2 className="text-2xl font-semibold text-gray-900 tracking-tight mb-6">
+        Recent Activity
+      </h2>
+      <div className="space-y-3 max-h-96 overflow-y-auto">
+        {history.map((entry) => (
+          <div
+            key={entry._id}
+            className="p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-150"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-gray-900">{entry.userName}</h3>
+              <span className="text-lg font-bold text-green-600">+{entry.points}</span>
+            </div>
+            <p className="text-sm text-gray-500">
+              {new Date(entry.timestamp).toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              })}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

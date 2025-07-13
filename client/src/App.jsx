@@ -29,9 +29,16 @@ const App = () => {
 
   return (
   <div className="max-w-7xl mx-auto mt-10 px-4">
-    <h1 className="text-3xl font-bold text-center mb-8">
-      🔢 User Points Claim System
-    </h1>
+    {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 tracking-tight mb-4">
+            Points System
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Manage users and track point claims with our elegant interface
+          </p>
+        </div>
+
 
     {/* Two-column layout */}
     <div className="flex flex-col md:flex-row gap-6">
